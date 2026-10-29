@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 from typing import Any, List
 import numpy as np
 
@@ -14,6 +15,7 @@ def add(a: int, b: int) -> int:
   Returns:
     The sum of the two numbers
   """
+  print("[add]")
   return a + b
 
 
@@ -27,6 +29,7 @@ def multiply(a: int, b: int) -> int:
   Returns:
     The product of the two numbers
   """
+  print("[multiply]")
   return a * b
 
 
@@ -41,11 +44,12 @@ def main():
   messages = [{'role': 'user', 'content': 'What is (11434+12341)*412?'}]
   while True:
       response: ChatResponse = chat(
-          model='qwen3',
+          model='gemini',
           messages=messages,
           tools=[add, multiply],
           think=True,
       )
+
       messages.append(response.message)
       print("Thinking: ", response.message.thinking)
       print("Content: ", response.message.content)
