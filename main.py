@@ -46,7 +46,7 @@ def main():
     'multiply': multiply,
   }
   
-  messages = [{'role': 'user', 'content': 'What is (11434 + 12341) * 412?'}]
+  messages = [{'role': 'user', 'content': 'What is (11434 + 12341) * 412?'}] # = 23775 * 412 = 9795300
   while True:
       response: ollama.ChatResponse = ollama.chat(
           model=model,
