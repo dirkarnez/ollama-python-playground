@@ -2,8 +2,7 @@
 import sys
 from typing import Any, List
 import numpy as np
-
-from ollama import chat, ChatResponse
+import ollama
 
 def add(a: int, b: int) -> int:
   """Add two numbers"""
@@ -15,7 +14,7 @@ def add(a: int, b: int) -> int:
   Returns:
     The sum of the two numbers
   """
-  print("[add]")
+  print("[add!!!!!!!!!!]")
   return a + b
 
 
@@ -29,22 +28,28 @@ def multiply(a: int, b: int) -> int:
   Returns:
     The product of the two numbers
   """
-  print("[multiply]")
+  print("[multiply!!!!!!!]")
   return a * b
 
 
 def main():
   print("hello world")
+
+  model = "deepseek-r1"
+
+  ollama.pull(model)
+  
+  print(f"model {model} is pulled")
   
   available_functions = {
     'add': add,
     'multiply': multiply,
   }
   
-  messages = [{'role': 'user', 'content': 'What is (11434+12341)*412?'}]
+  messages = [{'role': 'user', 'content': 'What is (11434 + 12341) * 412?'}]
   while True:
-      response: ChatResponse = chat(
-          model='gemini',
+      response: ollama.ChatResponse = ollama.chat(
+          model=model,
           messages=messages,
           tools=[add, multiply],
           think=True,
@@ -69,9 +74,9 @@ def main():
 
 if __name__ == "__main__":
   if "google.colab" in sys.modules:
-      pass
+    pass
   if "_pyodide" in sys.modules:
-      pass
+     pass
   main()
 
 
