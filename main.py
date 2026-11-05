@@ -35,11 +35,11 @@ def multiply(a: int, b: int) -> int:
 def main():
   print("hello world")
 
-  model = "deepseek-r1"
+  model = "lfm3"
 
-  ollama.pull(model)
+#   ollama.pull(model)
   
-  print(f"model {model} is pulled")
+#   print(f"model {model} is pulled")
   
   available_functions = {
     'add': add,
@@ -52,7 +52,7 @@ def main():
           model=model,
           messages=messages,
           tools=[add, multiply],
-          think=True,
+          think=False,
       )
 
       messages.append(response.message)
