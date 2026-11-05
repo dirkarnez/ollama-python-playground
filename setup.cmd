@@ -34,3 +34,6 @@ del PortableGit-2.42.0.2-64-bit.7z.exe
 if exist %GIT_EXE% (
     echo git %GIT_EXE% found
 )
+
+
+@REM https://github.com/ollama/ollama/releases/
